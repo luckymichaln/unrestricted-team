@@ -1,0 +1,65 @@
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+
+  &.lazyLoad {
+    transition: .024s;
+    opacity: 0;
+
+    &.isLoaded {
+      opacity: 1;
+    }
+  }
+}
+
+body {
+  font-family: $font-primary;
+  -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: #f2f2f2;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1330px) {
+    font-size: 30px;
+  }
+}
+
+strong,
+b {
+  font-family: $font-bold;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.container {
+  max-width: $container-width;
+  padding-right: $container-padding--mobile;
+  padding-left: $container-padding--mobile;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    padding-right: $container-padding;
+    padding-left: $container-padding;
+  }
+}
+
+p {
+  font-size: 16px;
+  line-height: 20px;
+}

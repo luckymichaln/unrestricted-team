@@ -18,5 +18,8 @@
     "vue-template-compiler": "^2.7.10",
     "vuex": "^3.6.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "sass": "^1.71.1",
+    "sass-loader": "10"
+  }
 }

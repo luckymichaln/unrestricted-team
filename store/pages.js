@@ -2,6 +2,7 @@ export const state = () => ({
   singlePageData: {
     home_page: null,
   },
+  navigation: null,
 })
 
 export const actions = {
@@ -26,12 +27,31 @@ export const actions = {
       console.error('error retrieving single page data:', { err, pageType })
     }
   },
+
+  async GET_NAVIGATION({ commit }) {
+    try {
+      let doc = {}
+      const result = await this.$prismic.api.getSingle('header')
+      doc = result.data
+
+      if (doc) {
+        commit('SET_NAVIGATION', { data: doc })
+      }
+
+    } catch (err) {
+      console.error('error retrieving main navigation text', { err })
+    }
+  }
 }
 
 export const mutations = {
   SET_SINGLE_PAGE_DATA(state, { data, pageType }) {
-    console.log('SINGLE DATA', data, pageType)
+    console.log(pageType, data, 'llds')
     state.singlePageData[`${pageType}`] = data
+  },
+
+  SET_NAVIGATION(state, { data }) {
+    state.navigation = data
   },
 }
 
@@ -39,8 +59,11 @@ export const getters = {
   homePageData: state => {
     if (!state.singlePageData.home_page) { return null }
 
-    return {
-      ...state.singlePageData.home_page,
-    }
+    return state.singlePageData.home_page
   },
+  navigationData: state => {
+    if (!state.navigation) { return null }
+
+    return state.navigation
+  }
 }
