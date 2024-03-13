@@ -26,7 +26,8 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 18px;
   font-weight: 400;
-  background-color: #f2f2f2;
+  color: $color-text;
+  background-color: $color-background;
 
   @media (min-width: 768px) {
     font-size: 24px;

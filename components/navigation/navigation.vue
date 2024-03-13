@@ -33,8 +33,14 @@ export default {
 
 <style lang="scss">
   .navigation {
-    background: white;
-    border-bottom: 1px solid black;
+    /* background: white; */
+    /* border-bottom: 1px solid black; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    color: white;
   }
 
   .navigation-list {
