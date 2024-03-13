@@ -75,7 +75,7 @@
       z-index: 0;
       display: block;
       width: 115%;
-      height: 120px;
+      height: 160px;
       transform: rotate(-2deg);
       z-index: 0;
     }
@@ -120,7 +120,7 @@
     &--big {
       font-size: 40px;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 13px;
       font-weight: 600;
     }
   }
@@ -142,7 +142,7 @@
   .logotypes {
     display: flex;
     flex-wrap: wrap;
-    margin: 80px auto;
+    margin: 120px auto 80px;
     width: 100%;
 
     li {
