@@ -1,7 +1,9 @@
 <template>
-  <transition name="page" mode="out-in">
-    <nuxt />
-  </transition>
+  <div class="mighty-wrapper">
+    <transition name="page" mode="out-in">
+      <nuxt />
+    </transition>
+  </div>
 </template>
 
 <script>

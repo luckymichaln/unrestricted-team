@@ -7,32 +7,22 @@
         class="hero-image"
       />
     </div>
-    <section class="home-section mission">
-      <div class="container">
-        <h1 class="heading heading--big">Nasza misja</h1>
-        <p class="text text-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </div>
-    </section>
-    <section class="home-section partners section-accent section-accent--dark">
-      <div class="container">
-        <h1 class="heading heading--big">Partnerzy</h1>
-        <p class="text text-box">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <ul class="logotypes">
-          <li>Logo 1</li>
-          <li>Logo 2</li>
-          <li>Logo 3</li>
-          <li>Logo 4</li>
-          <li>Logo 5</li>
-          <li>Logo 6</li>
-          <li>Logo 7</li>
-          <li>Logo 8</li>
-        </ul>
-      </div>
-    </section>
+    <div
+      v-for="(slice, index) in data.slices"
+      :key="index"
+    >
+      <mission v-if="slice.slice_type === 'mission'" :data="slice" />
+      <partners v-if="slice.slice_type === 'sponsors'" :data="slice" />
+      <team v-if="slice.slice_type === 'team'" :data="slice" />
+    </div>
   </div>
 </template>
 
 <script>
+  import mission from '~/components/slices/mission/mission';
+  import partners from '~/components/slices/partners/partners';
+  import team from '~/components/slices/team/team';
+
   export default {
     props: {
       data: {
@@ -43,6 +33,12 @@
 
     mounted() {
       console.dir(this.data)
+    },
+
+    components: {
+      mission,
+      partners,
+      team
     }
   }
 </script>
@@ -97,12 +93,17 @@
     &::before {
       background-color: $color-text;
     }
+
+    .text strong {
+      text-decoration-color: rgb(88 76 41 / 76%);
+    }
   }
 
   .heading {
     position: relative;
     text-align: center;
     margin-bottom: 80px;
+    /* mix-blend-mode: difference; */
 
     &::before {
       content: '';
@@ -125,14 +126,35 @@
     }
   }
 
-  .text {
+  .text,
+  .text p {
     font-size: 16px;
     line-height: 26px;
-  }
 
-  .text-box {
-    margin: 0 auto;
-    width: 80%;
+    .underline,
+    b,
+    strong {
+      position: relative;
+      text-decoration: underline;
+      font-style: none;
+      text-underline-offset: -0.3em;
+      text-decoration-thickness: 0.8em;
+      text-decoration-color: rgb(255 221 119 / 25%);
+      text-decoration-skip-ink: none;
+      text-decoration-skip: none;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    &--center {
+      text-align: center;
+    }
+    &--boxed {
+      margin: 0 auto;
+      width: 80%;
+    }
   }
 
   .home-section {
